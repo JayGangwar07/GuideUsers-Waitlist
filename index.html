@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join our waitlist to be the first to know when we launch">
+    <title>Join Our Waitlist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Main Waitlist Card -->
+        <div class="card" id="waitlistCard">
+            <h1 class="title">Join Our Waitlist</h1>
+            <p class="description">Be the first to know when we launch. Sign up to get early access and exclusive updates.</p>
+            
+            <form id="waitlistForm" class="form" novalidate>
+                <div class="form-group">
+                    <label for="name" class="label">Name (optional)</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="input"
+                        placeholder="John Doe"
+                        maxlength="100"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="label">Email <span class="required">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="input"
+                        placeholder="you@example.com"
+                        required
+                        maxlength="100"
+                        aria-describedby="emailError"
+                    >
+                    <span class="error-message" id="emailError" role="alert"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span class="btn-text">Join Waitlist</span>
+                    <span class="btn-loader" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Success State Card -->
+        <div class="card success-card hidden" id="successCard">
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <h2 class="success-title">You're on the list!</h2>
+            <p class="success-message">Thank you for joining. We'll notify you as soon as we launch.</p>
+            <p class="share-text">Share with friends:</p>
+            <div class="share-link-container">
+                <input 
+                    type="text" 
+                    readonly 
+                    class="share-link" 
+                    id="shareLink"
+                    aria-label="Shareable waitlist link"
+                >
+            </div>
+            <button class="btn btn-secondary" id="joinAnotherBtn">Join Another Email</button>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel hidden" id="adminPanel">
+            <div class="admin-header">
+                <h2 class="admin-title">Waitlist Admin</h2>
+                <button class="btn btn-small" id="logoutBtn">Logout</button>
+            </div>
+            <div class="admin-stats">
+                <p class="stat">Total Subscribers: <strong id="subscriberCount">0</strong></p>
+            </div>
+            <div class="admin-actions">
+                <button class="btn btn-primary" id="exportBtn">Export CSV</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear All Data</button>
+            </div>
+            <div class="subscriber-list" id="subscriberList"></div>
+        </div>
+
+        <!-- Admin Login (hidden by default) -->
+        <div class="admin-login hidden" id="adminLogin">
+            <div class="card">
+                <h2>Admin Access</h2>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="passphrase" class="label">Passphrase</label>
+                        <input 
+                            type="password" 
+                            id="passphrase" 
+                            class="input"
+                            placeholder="Enter admin passphrase"
+                            required
+                        >
+                        <span class="error-message" id="passphraseError" role="alert"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-secondary" id="backToWaitlistBtn">Back to Waitlist</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
